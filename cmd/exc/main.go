@@ -28,8 +28,8 @@ func main() {
 				}
 				cmd := Commander{
 					Path:    currentPath,
-					Command: os.Args[2],
-					Alias:   os.Args[3],
+					Alias:   os.Args[2],
+					Command: os.Args[3],
 					Args:    os.Args[4:],
 				}
 				Db.Add(cmd)
