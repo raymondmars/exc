@@ -6,7 +6,7 @@ import (
 
 func displayHelp() {
 
-	var helpDoc = `Exc is a tool for saving you command,args and execute it by alias
+	var helpDoc = `Exc is a tool for saving you command,args in different directory and execute it by alias
 
 Usage:
     exc [alias]  - to execute you command
