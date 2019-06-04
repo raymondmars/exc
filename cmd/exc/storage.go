@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 	"strings"
 )
 
@@ -112,11 +111,11 @@ func (s *Storage) Remove(alias string) bool {
 }
 
 func getDbFile() string {
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	home, err := os.UserHomeDir()
 	if err != nil {
 		panic(err)
 	}
-	return fmt.Sprintf("%s/%s", dir, dbFileName)
+	return fmt.Sprintf("%s/%s", home, dbFileName)
 
 }
 func writeToFile(cmds []Commander, flag int) {
