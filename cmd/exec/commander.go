@@ -6,14 +6,14 @@ import (
 )
 
 type Commander struct {
-	path    string
-	alias   string
-	command string
-	args    []string
+	Path    string
+	Alias   string
+	Command string
+	Args    []string
 }
 
 func (c *Commander) execute() {
-	cmd := exec.Command(c.command, c.args...)
+	cmd := exec.Command(c.Command, c.Args...)
 	out, _ := cmd.CombinedOutput()
 	fmt.Printf(string(out))
 }

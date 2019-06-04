@@ -32,10 +32,10 @@ func (s *Storage) LoadAll() {
 	for scanner.Scan() {
 		fields := strings.Split(scanner.Text(), "\t")
 		s.rows = append(s.rows, Commander{
-			path:    fields[0],
-			alias:   fields[1],
-			command: fields[2],
-			args:    fields[3:],
+			Path:    fields[0],
+			Alias:   fields[1],
+			Command: fields[2],
+			Args:    fields[3:],
 		})
 	}
 
@@ -44,7 +44,7 @@ func (s *Storage) Add(c Commander) {
 	if s.rows == nil {
 		s.rows = []Commander{}
 	}
-	if _, isExists := s.FindByPathAndAlias(c.path, c.alias); isExists {
+	if _, isExists := s.FindByPathAndAlias(c.Path, c.Alias); isExists {
 		return
 	}
 	s.rows = append(s.rows, c)
@@ -56,10 +56,17 @@ func (s *Storage) GetAll() []Commander {
 	return s.rows
 }
 
+func (s *Storage) GetCurrentAll() []Commander {
+	currentPath, crr := os.Getwd()
+	if crr != nil {
+		panic(crr)
+	}
+	return s.FindByPath(currentPath)
+}
 func (s *Storage) FindByPath(path string) []Commander {
 	var cm = []Commander{}
 	for _, c := range s.rows {
-		if c.path == path {
+		if c.Path == path {
 			cm = append(cm, c)
 		}
 	}
@@ -67,7 +74,7 @@ func (s *Storage) FindByPath(path string) []Commander {
 }
 func (s *Storage) FindByPathAndAlias(path string, alias string) (Commander, bool) {
 	for _, c := range s.rows {
-		if c.path == path && c.alias == alias {
+		if c.Path == path && c.Alias == alias {
 			return c, true
 		}
 	}
@@ -80,7 +87,7 @@ func (s *Storage) FindByAlias(alias string) (Commander, bool) {
 		panic(crr)
 	}
 	for _, c := range s.rows {
-		if c.path == currentPath && c.alias == alias {
+		if c.Path == currentPath && c.Alias == alias {
 			return c, true
 		}
 	}
@@ -93,7 +100,7 @@ func (s *Storage) Remove(alias string) bool {
 		panic(crr)
 	}
 	for index, c := range s.rows {
-		if c.path == currentPath && c.alias == alias {
+		if c.Path == currentPath && c.Alias == alias {
 			copy(s.rows[index:], s.rows[index+1:])
 			//save to disk
 			writeToFile(s.rows[:len(s.rows)-1], os.O_RDWR|os.O_TRUNC)
@@ -120,7 +127,7 @@ func writeToFile(cmds []Commander, flag int) {
 	defer f.Close()
 
 	for _, c := range cmds {
-		f.WriteString(fmt.Sprintf("%s\t%s\t%s\t%s\n", c.path, c.alias, c.command, strings.Join(c.args, "\t")))
+		f.WriteString(fmt.Sprintf("%s\t%s\t%s\t%s\n", c.Path, c.Alias, c.Command, strings.Join(c.Args, "\t")))
 	}
 
 }
