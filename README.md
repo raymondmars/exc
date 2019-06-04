@@ -1,15 +1,11 @@
-[![MIT licensed][5]][6] [![LICENSE](https://img.shields.io/badge/license-NPL%20(The%20996%20Prohibited%20License)-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE) [![Build Status][1]][2] [![Go Report Card][7]][8] [![GoCover.io][11]][12] [![GoDoc][9]][10]
+[![MIT licensed][1]][2] [![LICENSE](https://img.shields.io/badge/license-NPL%20(The%20996%20Prohibited%20License)-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE) [![Build Status][3]][4]
 
-[1]: https://travis-ci.org/0RaymondJiang0/exc.svg?branch=master
-[2]: https://travis-ci.org/0RaymondJiang0/exc
-[5]: https://img.shields.io/dub/l/vibe-d.svg
-[6]: LICENSE
-[7]: https://goreportcard.com/badge/github.com/timothyye/skm
-[8]: https://goreportcard.com/report/github.com/timothyye/skm
-[9]: https://godoc.org/github.com/TimothyYe/skm?status.svg
-[10]: https://godoc.org/github.com/TimothyYe/skm
-[11]: https://img.shields.io/badge/gocover.io-81.8%25-green.svg
-[12]: https://gocover.io/github.com/timothyye/skm
+[1]: https://img.shields.io/dub/l/vibe-d.svg
+[2]: LICENSE
+[3]: https://travis-ci.org/0RaymondJiang0/exc.svg?branch=master
+[4]: https://travis-ci.org/0RaymondJiang0/exc
+
+
 
 **Exc is a tool for saving you command,args and execute it by alias**      
 
