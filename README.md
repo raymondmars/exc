@@ -21,6 +21,7 @@ Commands:
     &emsp;--add value, -a value        &emsp;to add a command named with it's alias to cache (The value should be: alias command [args])    
     &emsp;--remove value, -r value     &emsp;to remove a command from cache (The value should be: alias)     
     &emsp;--list, -l                   &emsp;to show command list, it will depend on you current directory     
+    &emsp;--list-all, -la              &emsp;to show all command list in all directory     
     &emsp;--help, -h                   &emsp;to show help    
     &emsp;--version, -v                &emsp;to print the version      
 

@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -127,7 +128,10 @@ func writeToFile(cmds []Commander, flag int) {
 	defer f.Close()
 
 	for _, c := range cmds {
-		f.WriteString(fmt.Sprintf("%s\t%s\t%s\t%s\n", c.Path, c.Alias, c.Command, strings.Join(c.Args, "\t")))
+		_, err := f.WriteString(fmt.Sprintf("%s\t%s\t%s\t%s\n", c.Path, c.Alias, c.Command, strings.Join(c.Args, "\t")))
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 }

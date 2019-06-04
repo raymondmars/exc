@@ -19,6 +19,7 @@ Commands:
     --add value, -a value        to add a command named with it's alias to cache (The value should be: alias command [args])
     --remove value, -r value     to remove a command from cache (The value should be: alias)
     --list, -l                   to show command list, it will depend on you current directory
+    --list-all, -la              to show all command list in all directory
     --help, -h                   to show help
     --version, -v                to print the version
 

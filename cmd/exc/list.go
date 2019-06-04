@@ -14,7 +14,7 @@ const shortListTemplate = `alias			command			args
 `
 
 const detailListTemplate = `path			alias			command			args			
-------------------------------------------------------{{range .}}
+----------------------------------------------------------------------------------------{{range .}}
 {{.Path}}			{{.Alias}}			{{.Command}}			{{StringsJoin .Args " "}}
 {{end}}
 `

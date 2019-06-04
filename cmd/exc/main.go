@@ -44,6 +44,9 @@ func main() {
 			case "-l", "--list":
 				showCurrentPathCommands(Db.GetCurrentAll())
 				break
+			case "-la", "--list-all":
+				showAllPathCommands(Db.GetAll())
+				break
 			case "-h", "--help":
 				displayHelp()
 				break
