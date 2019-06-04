@@ -9,14 +9,12 @@ import (
 
 const shortListTemplate = `alias			command			args			
 ------------------------------------------------------{{range .}}
-{{.Alias}}			{{.Command}}			{{StringsJoin .Args " "}}
-{{end}}
+{{.Alias}}			{{.Command}}			{{StringsJoin .Args " "}}{{end}}
 `
 
 const detailListTemplate = `path			alias			command			args			
-----------------------------------------------------------------------------------------{{range .}}
-{{.Path}}			{{.Alias}}			{{.Command}}			{{StringsJoin .Args " "}}
-{{end}}
+--------------------------------------------------------------------------------{{range .}}
+{{.Path}}			{{.Alias}}			{{.Command}}			{{StringsJoin .Args " "}}{{end}}
 `
 
 func showCommands(cmds []Commander, templateStr string) {
