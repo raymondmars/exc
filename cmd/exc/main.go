@@ -42,10 +42,10 @@ func main() {
 				Db.Remove(os.Args[2])
 				break
 			case "-l", "--list":
-				showCurrentPathCommands(Db.GetCurrentAll())
+				printCommands(Db.GetCurrentAll())
 				break
 			case "-la", "-al", "--list-all":
-				showAllPathCommands(Db.GetAll())
+				printAllCommands(Db.GetAll())
 				break
 			case "-h", "--help":
 				displayHelp()
