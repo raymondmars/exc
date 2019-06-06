@@ -7,6 +7,7 @@ import (
 	"text/tabwriter"
 )
 
+// to print commands only in current directory
 func printCommands(cmds []Commander) {
 	const format = "%v\t%v\t%v\n"
 	tw := new(tabwriter.Writer).Init(os.Stdout, 0, 8, 2, ' ', 0)
@@ -18,6 +19,7 @@ func printCommands(cmds []Commander) {
 	tw.Flush() // calculate column widths and print table
 }
 
+// to print all commands in all directory
 func printAllCommands(cmds []Commander) {
 	const format = "%v\t%v\t%v\t%v\n"
 	tw := new(tabwriter.Writer).Init(os.Stdout, 0, 8, 2, ' ', 0)

@@ -14,6 +14,7 @@ type Storage struct {
 	rows []Commander
 }
 
+//to load all commands
 func (s *Storage) LoadAll() {
 
 	filePath := getDbFile()
@@ -40,6 +41,8 @@ func (s *Storage) LoadAll() {
 	}
 
 }
+
+//to add a command
 func (s *Storage) Add(c Commander) {
 	if s.rows == nil {
 		s.rows = []Commander{}
@@ -52,10 +55,13 @@ func (s *Storage) Add(c Commander) {
 	writeToFile([]Commander{c}, os.O_APPEND|os.O_WRONLY|os.O_CREATE)
 
 }
+
+//to get all command rows
 func (s *Storage) GetAll() []Commander {
 	return s.rows
 }
 
+//to get command list in current directory
 func (s *Storage) GetCurrentAll() []Commander {
 	currentPath, crr := os.Getwd()
 	if crr != nil {
@@ -63,6 +69,8 @@ func (s *Storage) GetCurrentAll() []Commander {
 	}
 	return s.FindByPath(currentPath)
 }
+
+//to search command by path
 func (s *Storage) FindByPath(path string) []Commander {
 	var cm = []Commander{}
 	for _, c := range s.rows {
@@ -72,6 +80,8 @@ func (s *Storage) FindByPath(path string) []Commander {
 	}
 	return cm
 }
+
+//to search command by path and alias
 func (s *Storage) FindByPathAndAlias(path string, alias string) (Commander, bool) {
 	for _, c := range s.rows {
 		if c.Path == path && c.Alias == alias {
@@ -81,6 +91,7 @@ func (s *Storage) FindByPathAndAlias(path string, alias string) (Commander, bool
 	return Commander{}, false
 }
 
+//to search command by alias in current directory
 func (s *Storage) FindByAlias(alias string) (Commander, bool) {
 	currentPath, crr := os.Getwd()
 	if crr != nil {
@@ -94,6 +105,7 @@ func (s *Storage) FindByAlias(alias string) (Commander, bool) {
 	return Commander{}, false
 }
 
+//to remove a command from cache by alias
 func (s *Storage) Remove(alias string) bool {
 	currentPath, crr := os.Getwd()
 	if crr != nil {
@@ -110,6 +122,7 @@ func (s *Storage) Remove(alias string) bool {
 	return false
 }
 
+//to get cache file name
 func getDbFile() string {
 	home, err := os.UserHomeDir()
 	if err != nil {
@@ -118,6 +131,8 @@ func getDbFile() string {
 	return fmt.Sprintf("%s/%s", home, dbFileName)
 
 }
+
+//to write command to cache file
 func writeToFile(cmds []Commander, flag int) {
 	filePath := getDbFile()
 	f, err := os.OpenFile(filePath, flag, 0755)

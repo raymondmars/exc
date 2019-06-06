@@ -12,6 +12,7 @@ type Commander struct {
 	Args    []string
 }
 
+//to execute command and display output
 func (c *Commander) execute() {
 	cmd := exec.Command(c.Command, c.Args...)
 	out, _ := cmd.CombinedOutput()

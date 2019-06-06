@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+//to display help doc
 func displayHelp() {
 
 	var helpDoc = `Exc is a tool for saving you command,args in different directory and execute it by alias
